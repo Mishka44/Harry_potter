@@ -33,9 +33,9 @@ int main()
                 [](unsigned char c) { return std::tolower(c); });
             /*auto res = std::find(tmp.begin(), tmp.end(), "\n");
             if (res != tmp.end()) {
-                tmp.erase(std::remove(tmp.begin(), tmp.end(), '\n'), tmp.end());
+                tmp.erase(std::remove(tmp.begin(), tmp.end(), '\n'), tmp.end()); 
             }*/
-            tmp.erase(std::remove(tmp.begin(), tmp.end(), '-'), tmp.end());
+            tmp.erase(std::remove(tmp.begin(), tmp.end(), '-'), tmp.end()); // спорно, но как сделать так, чтобы всё чётко работало я не смог понять
             tmp.erase(std::remove(tmp.begin(), tmp.end(), ','), tmp.end());
             tmp.erase(std::remove(tmp.begin(), tmp.end(), '.'), tmp.end());
             tmp.erase(std::remove(tmp.begin(), tmp.end(), '\"'), tmp.end());
@@ -66,20 +66,6 @@ int main()
         el.erase(std::remove(el.begin(), el.end(), ':'), el.end());
         el.erase(std::remove(el.begin(), el.end(), ';'), el.end());
     }*/
-    //for (auto& el : dictionary_set)
-    //{
-    //    /*std::transform(el.begin(), el.end(), el.begin(),
-    //        [](unsigned char c) { return std::tolower(c); });*/
-    //    /*el.erase(std::remove(el.begin(), el.end(), ','), el.end());
-    //    el.erase(std::remove(el.begin(), el.end(), '.'), el.end());
-    //    el.erase(std::remove(el.begin(), el.end(), '\"'), el.end());
-    //    el.erase(std::remove(el.begin(), el.end(), '?'), el.end());
-    //    el.erase(std::remove(el.begin(), el.end(), '!'), el.end());
-    //    el.erase(std::remove(el.begin(), el.end(), '('), el.end());
-    //    el.erase(std::remove(el.begin(), el.end(), ')'), el.end());
-    //    el.erase(std::remove(el.begin(), el.end(), ':'), el.end());
-    //    el.erase(std::remove(el.begin(), el.end(), ';'), el.end());*/
-    //}
     
     std::stable_sort(dictionary.begin(), dictionary.end());
     std::vector<std::string>::iterator it;
@@ -99,10 +85,10 @@ int main()
     }*/
     printset(dictionary_set);
 
-    /*for (int i = 0; i < dictionary.size(); i++)
+    for (int i = 0; i < dictionary.size(); i++)
     {
         std::cout << dictionary[i] << ", "<<  "\n";
-    }*/
+    }
 }
 
 
