@@ -13,12 +13,12 @@
 
 
 
-void write_in(char(&a)[100], std::string s)
-{
-    int min = 100 < s.size() ? 100 : s.size();
-    for (int i = 0; i < min; i++)
-        a[i] = s[i];
-}
+//void write_in(char(&a)[100], std::string s)
+//{
+//    int min = 100 < s.size() ? 100 : s.size();
+//    for (int i = 0; i < min; i++)
+//        a[i] = s[i];
+//}
 
 
 void printset(const std::set<std::string>& s) {
@@ -44,15 +44,17 @@ int main()
             std::string tmp;
             book >> tmp;
             std::transform(tmp.begin(), tmp.end(), tmp.begin(),
-                [](unsigned char c) { return std::tolower(c); });
+                [](unsigned char c) { return std::tolower(c); }); // преобразование к нижнему регистру
+
+
             /*auto res = std::find(tmp.begin(), tmp.end(), "\n");
             if (res != tmp.end()) {
                 tmp.erase(std::remove(tmp.begin(), tmp.end(), '\n'), tmp.end());
             }*/
 
-            char str[100];
-            write_in(str, tmp);
-            for (size_t i = 0; i < tmp.size(); ++i)
+            /*char str[100];
+            write_in(str, tmp);*/
+            /*for (size_t i = 0; i < tmp.size(); ++i)
             {
                 for (size_t j = 0; j < 9; ++j)
                 {
@@ -77,8 +79,9 @@ int main()
                         str[i] = NULL;
                     }
                 }
-            }
+            }*/ // Попытка Лёвы создать алгоритм для правильного удаления тире, не вышло:(
 
+            tmp.erase(std::remove(tmp.begin(), tmp.end(), '-'), tmp.end()); // как уж получилось
             tmp.erase(std::remove(tmp.begin(), tmp.end(), ','), tmp.end());
             tmp.erase(std::remove(tmp.begin(), tmp.end(), '.'), tmp.end());
             tmp.erase(std::remove(tmp.begin(), tmp.end(), '\"'), tmp.end());
@@ -110,20 +113,7 @@ int main()
         el.erase(std::remove(el.begin(), el.end(), ':'), el.end());
         el.erase(std::remove(el.begin(), el.end(), ';'), el.end());
     }*/
-    //for (auto& el : dictionary_set)
-    //{
-    //    /*std::transform(el.begin(), el.end(), el.begin(),
-    //        [](unsigned char c) { return std::tolower(c); });*/
-    //    /*el.erase(std::remove(el.begin(), el.end(), ','), el.end());
-    //    el.erase(std::remove(el.begin(), el.end(), '.'), el.end());
-    //    el.erase(std::remove(el.begin(), el.end(), '\"'), el.end());
-    //    el.erase(std::remove(el.begin(), el.end(), '?'), el.end());
-    //    el.erase(std::remove(el.begin(), el.end(), '!'), el.end());
-    //    el.erase(std::remove(el.begin(), el.end(), '('), el.end());
-    //    el.erase(std::remove(el.begin(), el.end(), ')'), el.end());
-    //    el.erase(std::remove(el.begin(), el.end(), ':'), el.end());
-    //    el.erase(std::remove(el.begin(), el.end(), ';'), el.end());*/
-    //}
+    
 
     std::stable_sort(dictionary.begin(), dictionary.end());
     std::vector<std::string>::iterator it;
@@ -143,10 +133,10 @@ int main()
     }*/
     printset(dictionary_set);
 
-    /*for (int i = 0; i < dictionary.size(); i++)
+    for (int i = 0; i < dictionary.size(); i++)
     {
         std::cout << dictionary[i] << ", "<<  "\n";
-    }*/
+    }
 }
 
 
